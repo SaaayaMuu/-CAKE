@@ -1,0 +1,23 @@
+<body class="bg-info">
+
+<div class="container mt-4">
+    <div class="row">
+      <div class="mx-auto col-10">
+        <h2 class="border-bottom text-center text-light">ジャンル一覧</h2>
+        <div class="text-center mt-5">
+          <% @items.each do |item| %>
+            <%= link_to admin_item_path(item.id) do %>
+             <%= image_tag item.get_image, size:"200x200", class: "border border-5 mx-3 my-3" %>
+            <% end %>
+          <% end %> 
+        </div>
+        <h5 class="text-center mt-5">
+          <%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-lg btn-light" %>
+        </h5>
+      </div>
+    </div>
+</div>
+
+</body>
+
+

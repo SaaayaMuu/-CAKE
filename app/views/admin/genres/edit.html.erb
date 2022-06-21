@@ -1,0 +1,11 @@
+<h1>ジャンル名編集</h1>
+<%= form_with model: @genre, url: admin_genre_path do |f| %>
+
+<div class="form-group">
+    <label for="genre_Name">Name</label><br>
+    <%= f.text_field :name, autofocus: true, id:"genre_Name", placeholder: "Name" %>
+</div>
+<div class="action">
+<%= f.submit '変更', method: :patch, class: "btn btn-sm btn-success" %>
+
+<% end %>

@@ -5,18 +5,69 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-# 管理者用
-# URL /admin/sign_in ...
+
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
   root to: "public/homes#top"
   
+  get '/customers/my_page' => 'customers#show' 
+  get '/customers/unsubscribe' => 'customers#unsubscribe' 
+  resource :customer, only: [:edit]
+  
+
   namespace :admin do
     get '/' => 'homes#top'
-    
+    resources :items, only: [:new, :create, :show, :edit, :update, :index]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
+  
+
+
+# ↑skip オプションを使用し不要なルーティングを削除
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+
+  
 end
+
+#new_customer_session GET    /customers/sign_in(.:format)            public/sessions#new
+#customer_session POST   /customers/sign_in(.:format)                public/sessions#create
+#destroy_customer_session DELETE /customers/sign_out(.:format)       public/sessions#destroy
+#new_customer_registration GET    /customers/sign_up(.:format)       public/registrations#new
+#edit_customer_registration GET    /customers/edit(.:format)         public/registrations#update
+#PUT    /customers(.:format)                                         public/registrations#update
+#DELETE /customers(.:format)                                         public/registrations#destroy
+#POST   /customers(.:format)                                         public/registrations#create
+
+#root GET                     /                                      public/homes#top
+#customers_my_page GET        /customers/my_page(.:format)           customers#show
+#customers_unsubscribe GET    /customers/unsubscribe(.:format)       customers#unsubscribe
+#edit_customer GET            /customer/edit(.:format)               customers#edit
+
+
+#new_admin_session GET    /admin/sign_in(.:format)                   admin/sessions#new
+#admin_session POST   /admin/sign_in(.:format)                       admin/sessions#create
+#destroy_admin_session DELETE /admin/sign_out(.:format)              admin/sessions#destroy
+#admin GET  /admin(.:format)                                         admin/homes#top
+
+#admin_items GET    /admin/items(.:format)                           admin/items#index
+#new_admin_item GET    /admin/items/new(.:format)                   admin/items#new
+#edit_admin_item GET    /admin/items/edit(.:format)                 admin/items#edit
+#admin_itemGET    /admin/items(.:format)                                       admin/items#show
+#admin_itemPATCH  /admin/items(.:format)                                       admin/items#update
+#admin_itemPUT    /admin/items(.:format)                                       admin/items#update
+#POST   /admin/items(.:format)                                       admin/items#create
+#admin_genres GET    /admin/genres(.:format)                         admin/genres#index
+#POST   /admin/genres(.:format)                                      admin/genres#create
+#edit_admin_genre GET    /admin/genres/:id/edit(.:format)            admin/genres#edit
+#admin_genre PATCH  /admin/genres/:id(.:format)                      admin/genres#update
+#PUT    /admin/genres/:id(.:format)                                  admin/genres#update
+#admin_customers GET    /admin/customers(.:format)                   admin/customers#index
+#edit_admin_customer GET    /admin/customers/:id/edit(.:format)      admin/customers#edit
+#admin_customer GET    /admin/customers/:id(.:format)                admin/customers#show
+#PATCH  /admin/customers/:id(.:format)                               admin/customers#update
+#PUT    /admin/customers/:id(.:format)                               admin/customers#update

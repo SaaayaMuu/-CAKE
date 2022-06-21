@@ -1,0 +1,25 @@
+
+
+
+
+<div class="container mt-4">
+    <div class="row">
+      <div class="mx-auto col-10 col-xl-6 col-lg-7 col-sm-9 pt-4">
+        <h2 class="border-bottom text-center">ジャンル一覧</h2>
+        <% @genres.each do |genre| %>
+        <h5 class="text-center"><%= link_to genre.name, edit_admin_genre_path(genre.id) %></h5>
+        <% end %>
+        
+        <h4 class="border-bottom text-center mt-5">ジャンルの追加</h4>
+        <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+        <div class="form_input">
+          <%= f.label :name %>
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="form_action text-right mt-2">
+        <%= f.submit "登録する", class: "btn btn-sm btn-success" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+</div>

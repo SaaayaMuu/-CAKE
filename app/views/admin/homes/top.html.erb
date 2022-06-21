@@ -1,1 +1,12 @@
-<h1>admin/homes#top</h1>
+
+<div class="container mt-4">
+    <div class="row">
+      <div class="mx-auto col-10 col-xl-6 col-lg-7 col-sm-9 pt-4">
+        <h3 class="border-bottom text-center"><%= link_to "商品一覧", admin_items_path %></h3>
+        <h3 class="border-bottom text-center"><%= link_to "ジャンル", admin_genres_path %></h3>
+        <h3 class="border-bottom text-center"><%= link_to "顧客", admin_customers_path%></h3>
+        <h3 class="border-bottom text-center"><%= link_to "オーダー" %></h3>
+        <h3 class="border-bottom text-center"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></h3>
+      </div>
+    </div>
+</div>
