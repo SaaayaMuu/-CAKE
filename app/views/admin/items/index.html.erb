@@ -1,9 +1,9 @@
-<body class="bg-info">
+
 
 <div class="container mt-4">
     <div class="row">
       <div class="mx-auto col-10">
-        <h2 class="border-bottom text-center text-light">ジャンル一覧</h2>
+        <h2 class="border-bottom text-center">商品一覧</h2>
         <div class="text-center mt-5">
           <% @items.each do |item| %>
             <%= link_to admin_item_path(item.id) do %>
@@ -12,12 +12,16 @@
           <% end %> 
         </div>
         <h5 class="text-center mt-5">
-          <%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-lg btn-light" %>
+          <%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-lg btn-primary" %>
         </h5>
+        <h5 class="text-center mt-5">
+          <%= link_to "TOP画面", admin_path, class: "btn btn-lg btn-warning" %>
+        </h5>
+        
       </div>
     </div>
 </div>
 
-</body>
+
 
 
