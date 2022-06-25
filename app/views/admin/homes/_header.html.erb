@@ -1,0 +1,36 @@
+
+  <body class="d-flex flex-column vh-100 border">
+    <nav class="navbar navbar-expand-lg navbar-dark border">
+      <div class="container my-4">
+        <div class="border px-5"><h4>LOGO</h4></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-4">
+              <%= link_to admin_items_path, class: "border text-dark font-weight-bold p-2" do %>
+              <% end %>
+            </li> 
+            <li class="nav-item mr-4">
+              <%= link_to admin_items_path, class: "border text-dark font-weight-bold p-2" do %>商品一覧
+              <% end %>
+            </li>
+            <li class="nav-item mr-4">
+              <%= link_to admin_items_path, class: "border text-dark font-weight-bold p-2" do %>新規
+              <% end %>
+            </li> 
+            <li class="nav-item mr-4">
+              <%= link_to admin_genres_path, class: "border text-dark font-weight-bold p-2" do %>ジャンル一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "border text-dark font-weight-bold p-2" do %>ログアウト
+              <% end %>
+            </li> 
+            </ul>
+          </div>
+      </div>
+    </nav>
+  </header>

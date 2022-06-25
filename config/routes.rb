@@ -1,25 +1,34 @@
 Rails.application.routes.draw do
   
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+
+
+
   root to: "public/homes#top"
-  
-  get '/customers/my_page' => 'customers#show' 
+  get '/about', to: 'public/homes#about'
+
+  get '/customers/my_page', to: 'customers#show'
   get '/customers/unsubscribe' => 'customers#unsubscribe' 
-  resource :customer, only: [:edit]
+  
+  resources :customers, only: [:edit, :update, :withdraw]
+  resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :destroy_all]
+  resources :orders, only: [:new, :comfirm, :thanks, :index, :show, :create]
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :items, only: [:new, :create, :show, :edit, :update, :index]
+    resources :items, only: [:new, :create, :show, :edit, :update, :index, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
@@ -43,10 +52,37 @@ end
 #DELETE /customers(.:format)                                         public/registrations#destroy
 #POST   /customers(.:format)                                         public/registrations#create
 
-#root GET                     /                                      public/homes#top
-#customers_my_page GET        /customers/my_page(.:format)           customers#show
 #customers_unsubscribe GET    /customers/unsubscribe(.:format)       customers#unsubscribe
-#edit_customer GET            /customer/edit(.:format)               customers#edit
+#mypage GET    /customers/my_page(.:format)                          customers#show
+#edit_customer GET    /customer/edit(.:format)                       customers#edit
+
+#root GET                     /                                      public/homes#top
+#about GET    /about(.:format)                                       homes#about
+
+#items GET    /items(.:format)                                      　items#index
+#item GET    /items/:id(.:format)                                  　 items#show
+
+#customers_my_page GET    /customers/my_page(.:format)                customers#show
+#customers_unsubscribe GET    /customers/unsubscribe(.:format)        customers#unsubscribe
+#edit_customer GET    /customers/:id/edit(.:format)                   customers#edit
+#PUT    /customers/:id(.:format)                                      customers#update
+
+#cart_items GET    /cart_items(.:format)                              cart_items#index
+#cart_item PATCH  /cart_items/:id(.:format)                           cart_items#update
+#PUT    /cart_items/:id(.:format)                                     cart_items#update
+#DELETE /cart_items/:id(.:format)                                     cart_items#destroy
+
+#orders GET    /orders(.:format)                                      orders#index
+#POST   /orders(.:format)                                             orders#create
+#new_order GET    /orders/new(.:format)                               orders#new
+#order GET    /orders/:id(.:format)                                   orders#show
+
+#addresses GET    /addresses(.:format)                                addresses#index
+#POST   /addresses(.:format)                                          addresses#create
+#edit_address GET    /addresses/:id/edit(.:format)                    addresses#edit
+#address PATCH  /addresses/:id(.:format)                              addresses#update
+#PUT    /addresses/:id(.:format)                                      addresses#update
+#DELETE /addresses/:id(.:format)                                      addresses#destroy
 
 
 #new_admin_session GET    /admin/sign_in(.:format)                   admin/sessions#new
@@ -57,9 +93,9 @@ end
 #admin_items GET    /admin/items(.:format)                           admin/items#index
 #new_admin_item GET    /admin/items/new(.:format)                   admin/items#new
 #edit_admin_item GET    /admin/items/edit(.:format)                 admin/items#edit
-#admin_itemGET    /admin/items(.:format)                                       admin/items#show
-#admin_itemPATCH  /admin/items(.:format)                                       admin/items#update
-#admin_itemPUT    /admin/items(.:format)                                       admin/items#update
+#admin_itemGET    /admin/items(.:format)                             admin/items#show
+#admin_itemPATCH  /admin/items(.:format)                             admin/items#update
+#admin_itemPUT    /admin/items(.:format)                             admin/items#update
 #POST   /admin/items(.:format)                                       admin/items#create
 #admin_genres GET    /admin/genres(.:format)                         admin/genres#index
 #POST   /admin/genres(.:format)                                      admin/genres#create

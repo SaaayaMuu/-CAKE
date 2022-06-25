@@ -1,27 +1,28 @@
 
 
-<div class="container mt-4">
-    <div class="row">
-      <div class="mx-auto col-10">
-        <h2 class="border-bottom text-center">商品一覧</h2>
-        <div class="text-center mt-5">
-          <% @items.each do |item| %>
-            <%= link_to admin_item_path(item.id) do %>
-             <%= image_tag item.get_image, size:"200x200", class: "border border-5 mx-3 my-3" %>
-            <% end %>
-          <% end %> 
-        </div>
-        <h5 class="text-center mt-5">
-          <%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-lg btn-primary" %>
-        </h5>
-        <h5 class="text-center mt-5">
-          <%= link_to "TOP画面", admin_path, class: "btn btn-lg btn-warning" %>
-        </h5>
-        
-      </div>
-    </div>
+<div class="col-md-8 offset-md-1">
+    <div class="my-3"><span class="bg-secondary lead">商品一覧</span></div>
+    <table class="table table-hover table-inverse">
+      <thead>
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+        <th colspan="3"></th>
+      </tr>
+      <% @items.each do |item| %>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= item.price %></td>
+        <th><%= item.genre.name %></th>
+        <th></th>
+      </tr>
+      </tbody>
+      <% end %>
+    </table>
 </div>
-
-
-
-

@@ -31,8 +31,9 @@
   
  
   <div class="action text-right">
-  <%= f.submit '変更', method: :patch, class: "btn btn-md btn-success" %>
-  <%= link_to admin_item_path, class: "btn btn-md btn-warning text-light" do %>戻る
+  <%= f.submit '変更', method: :patch, class: "btn btn-success" %>
+  <%= link_to admin_item_path, method: :delete, class: "btn btn-danger" do %>Destroy<% end %>
+  <%= link_to admin_item_path, class: "btn btn-warning text-light" do %>戻る
   <% end %>
   </div>
   
