@@ -18,6 +18,8 @@
   <span class="mt-5 border-bottom">商品価格(税抜)</span>
   <p><%= @item.price %></p>
   
+  <span class="mt-5 border-bottom">販売ステータス</span>
+  <p><%= @item.is_active ? '販売中' : '販売停止中' %></p>
   
   <p class="text-center bg-primary rounded mt-5">
   <%= link_to edit_admin_item_path(@item.id), class: "text-light" do %>編集

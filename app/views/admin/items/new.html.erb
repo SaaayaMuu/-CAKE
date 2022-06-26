@@ -1,33 +1,45 @@
 <div class="container mt-4">
 <div class="row">
-<div class="mx-auto col-10 col-xl-6 col-lg-7 col-sm-9 pt-4">
 
-<h2 class="mt-3 border-bottom text-center mb-5">新規登録</h2>
+<div class="mb-3"><span class="lead">商品新規登録</span></div>
+
+<div class="mx-auto col-8 col-xl-4 col-lg-5 col-sm-7 pt-4">
+  
+
+
+
 <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
 
-<div class="form-group">
-  　<label for="item_name">商品名</label>
+
+<div class="form-group form-inline">
+    <label for="item_image">商品画像</label>
+    <%= f.file_field :image, accept: "image/*" %>
+</div>
+
+<div class="form-group form-inline">
+  　<span class="text-left"><label for="item_name">商品名</label></span>
     <input class="form-control item_name" type="text" name="item[name]" id="item_name">
 </div>
 
-<div class="form-group">
+
+<div class="form-group form-inline">
    <label for="item_introduction">商品説明</label>
    <textarea class="form-control item_introduction" name="item[introduction]" id="item_introduction"></textarea>
 </div>
 
-<div class="form-group">
-    <label for="item_image">画像</label>
-    <%= f.file_field :image, accept: "image/*" %>
-</div>
-
-<div class="form_input">
+<div class="form_input form-inline">
     <%= f.label :genre, 'ジャンル' %>
     <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "ジャンルを選択してください" %>
 </div>
 
-<div class="form-group">
-  　<label for="item_price">商品価格</label>
+<div class="form-group form-inline">
+  　<label for="item_price">税抜価格</label>
     <input class="form-control item_price" name="item[price]" id="item_price">
+</div>
+
+<div class="form-group form-inline">
+   <label><input type="radio" name="item[is_active]" class="check" value="true" checked="checked">販売中</label>
+   <label><input type="radio" name="item[is_active]" class="check" value="false">販売停止中</label>
 </div>
 
 <div class="form_action text-right mt-2">

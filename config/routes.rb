@@ -16,15 +16,16 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get '/about', to: 'public/homes#about'
 
-  get '/customers/my_page', to: 'customers#show'
-  get '/customers/unsubscribe' => 'customers#unsubscribe' 
+  scope module: :public do
+    get '/customers/my_page', to: 'customers#show'
+    get '/customers/unsubscribe' => 'customers#unsubscribe' 
   
-  resources :customers, only: [:edit, :update, :withdraw]
-  resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all]
-  resources :orders, only: [:new, :comfirm, :thanks, :index, :show, :create]
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  
+    resources :customers, only: [:edit, :update, :withdraw]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all]
+    resources :orders, only: [:new, :comfirm, :thanks, :index, :show, :create]
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
 
   namespace :admin do
     get '/' => 'homes#top'

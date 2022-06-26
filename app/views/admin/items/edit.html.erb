@@ -29,6 +29,10 @@
     <%= f.text_field :price, autofocus: true, id:"item_Price", placeholder: "Price" %>
   </div>
   
+  <div class="form-group">
+    <label><input type="radio" name="item[is_active]" class="check" value="true" checked="checked">販売中</label>
+    <label><input type="radio" name="item[is_active]" class="check" value="false">販売停止中</label>
+ </div>
  
   <div class="action text-right">
   <%= f.submit '変更', method: :patch, class: "btn btn-success" %>

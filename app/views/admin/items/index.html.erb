@@ -1,8 +1,12 @@
 
 
-<div class="col-md-8 offset-md-1">
-    <div class="my-3"><span class="bg-secondary lead">商品一覧</span></div>
-    <table class="table table-hover table-inverse">
+<div class="col-md-8 offset-md-2">
+    <p class="my-4">
+      <span class="bg-secondary lead px-3">商品一覧</span>
+      <%=link_to new_admin_item_path, class: "btn btn-light shadow rounded-circle px-2 float-right" do %>＋<% end %>
+    </p>
+    
+    <table class="table">
       <thead>
       <tr>
         <th>商品ID</th>
@@ -17,10 +21,12 @@
       <tbody>
       <tr>
         <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= link_to admin_item_path(item.id), class: "text-dark" do  %><%= item.name %><% end %></td>
         <td><%= item.price %></td>
         <th><%= item.genre.name %></th>
-        <th></th>
+        <th>
+          <%= item.is_active ? '販売中' : '販売停止中' %>
+        </th>
       </tr>
       </tbody>
       <% end %>
