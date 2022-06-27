@@ -1,2 +1,50 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+
+  <div class="container mt-4">
+    
+    <div class="row mb-3">
+      <p class="col-sm-6 col-md-5 col-lg-4 col-xl-4 text-center">
+        <span class="lead"><%= @customer.last_name %><%= @customer.first_name %><%= "さんの会員詳細" %></span>
+        </p>
+    </div>
+    
+    <div class="row">
+      
+      <div class="col-12">
+        
+        <label for="customer_id" class="col-4 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-form-label">会員ID</label>
+        <%= @customer.id %></br>
+        
+        <label for="customer_name" class="col-4 col-sm-6 col-md-5  col-lg-5 col-xl-4 col-form-label">氏名</label>
+        <%= @customer.last_name %><%= "　" %><%= @customer.first_name %></br>
+        
+        <label for="customer_hurigana" class="col-4 col-sm-6 col-md-5  col-lg-5 col-xl-4 col-form-label">フリガナ</label>
+        <%= @customer.last_name_kana %><%= "　" %><%= @customer.first_name_kana %></br>
+        
+        <label for="customer_postal_code" class="col-4 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-form-label">郵便番号</label>
+        <%=@customer.postal_code %></br>
+        
+        <label for="customer_address" class="col-4 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-form-label">住所</label>
+        <%=@customer.address %></br>
+        
+        <label for="customer_telephone_number" class="col-4 col-sm-6 col-md-5 col-xl-4 col-lg-5 col-form-label">電話番号</label>
+        <%=@customer.telephone_number %></br>
+        
+        <label for="customer_email" class="col-4 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-form-label">メールアドレス</label>
+        <%=@customer.email %></br>
+        
+        <label for="customer_is_deleted" class="col-4 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-form-label">会員ステータス</label>
+         <%= @customer.is_deleted ? '有効' : '退会' %></br>
+         
+        <label class="col-1 col-sm-3 col-md-5 col-lg-5 col-xl-4 col-form-label"></label>
+        <span class="mr-1">
+          <%= link_to edit_admin_customer_path(@customer.id), class: "text-light btn btn-success px-4 py-2" do %>編集する<% end %>
+        </span>
+        <span class="ml-4">
+          <%= link_to admin_path, class: "text-light btn btn-primary px-4 py-2" do %>注文履歴一覧を見る<% end %>
+        </span>
+        
+      </div>  
+      
+     
+    </div>
+ </div>  

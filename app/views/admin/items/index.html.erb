@@ -2,7 +2,7 @@
 
 <div class="col-md-8 offset-md-2">
     <p class="my-4">
-      <span class="bg-secondary lead px-3">商品一覧</span>
+      <span class="lead px-3">商品一覧</span>
       <%=link_to new_admin_item_path, class: "btn btn-light shadow rounded-circle px-2 float-right" do %>＋<% end %>
     </p>
     
@@ -23,10 +23,10 @@
         <td><%= item.id %></td>
         <td><%= link_to admin_item_path(item.id), class: "text-dark" do  %><%= item.name %><% end %></td>
         <td><%= item.price %></td>
-        <th><%= item.genre.name %></th>
-        <th>
+        <td><%= item.genre.name %></td>
+        <td>
           <%= item.is_active ? '販売中' : '販売停止中' %>
-        </th>
+        </td>
       </tr>
       </tbody>
       <% end %>

@@ -1,54 +1,57 @@
-<div class="container mt-4">
-<div class="row">
 
-<div class="mb-3"><span class="lead">商品新規登録</span></div>
-
-<div class="mx-auto col-8 col-xl-4 col-lg-5 col-sm-7 pt-4">
-  
-
-
-
-<%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-
-
-<div class="form-group form-inline">
-    <label for="item_image">商品画像</label>
-    <%= f.file_field :image, accept: "image/*" %>
-</div>
-
-<div class="form-group form-inline">
-  　<span class="text-left"><label for="item_name">商品名</label></span>
-    <input class="form-control item_name" type="text" name="item[name]" id="item_name">
-</div>
-
-
-<div class="form-group form-inline">
-   <label for="item_introduction">商品説明</label>
-   <textarea class="form-control item_introduction" name="item[introduction]" id="item_introduction"></textarea>
-</div>
-
-<div class="form_input form-inline">
-    <%= f.label :genre, 'ジャンル' %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "ジャンルを選択してください" %>
-</div>
-
-<div class="form-group form-inline">
-  　<label for="item_price">税抜価格</label>
-    <input class="form-control item_price" name="item[price]" id="item_price">
-</div>
-
-<div class="form-group form-inline">
-   <label><input type="radio" name="item[is_active]" class="check" value="true" checked="checked">販売中</label>
-   <label><input type="radio" name="item[is_active]" class="check" value="false">販売停止中</label>
-</div>
-
-<div class="form_action text-right mt-2">
-  <%= f.submit "登録する", class: "btn btn-lg btn-success" %>
-  <%= link_to admin_items_path, class: "btn btn-lg btn-warning text-light" do %>戻る
-  <% end %>
-</div>
-<% end %> 
-
-</div>
-</div>
-</div>
+  <div class="container mt-4">
+    <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    
+    <div class="row mb-3">
+      <p class="col-sm-6 text-center"><span class="lead">商品新規登録</span></p>
+    </div>
+    
+    <div class="row mb-3 justify-content-center">
+      <label for="item_image" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">商品画像</label>
+      <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4">
+        <%= f.file_field :image, accept: "image/*" %>
+        </div>
+    </div>
+    
+    <div class="row mb-3 justify-content-center">
+      <label for="item_name" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">商品名</label>
+      <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4">
+        <input class="form-control item_name" type="text" name="item[name]" id="item_name">
+      </div>
+    </div>
+    
+    <div class="row mb-3 justify-content-center">
+      <label for="item_introduction" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">商品説明</label>
+      <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4 ">
+        <textarea class="form-control item_introduction" name="item[introduction]" id="item_introduction"></textarea>
+      </div>
+    </div>
+    
+    <div class="row mb-3 justify-content-center">
+      <label for="item_introduction" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">ジャンル</label>
+      <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4">
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "ジャンルを選択してください" %>
+      </div>
+    </div>
+    
+    <div class="row mb-3 justify-content-center">
+      <label for="item_price" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">税抜価格</label>
+      <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4 ">
+        <input class="form-control item_price" type="text" name="item[price]" id="item_price">
+      </div>
+    </div>
+    
+    <div class="row mb-3 justify-content-center">
+      <label for="item_introduction" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">販売ステータス</label>
+      <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4">
+        <label><input type="radio" name="item[is_active]" class="check" value="true" checked="checked">販売中</label>
+        <label><input type="radio" name="item[is_active]" class="check" value="false">販売停止中</label>
+      </div>
+    </div>
+    
+    <div class="form_action text-center mt-2">
+     <%= f.submit "新規登録", class: "btn btn-success px-4 py-2" %>
+    </div>
+    
+    <% end %>
+  </div>  
