@@ -1,5 +1,10 @@
 class Public::ItemsController < ApplicationController
-end
+
 
 def index
+  @items = Item.all
+  @item = Item.order("created_at DESC").limit(1)
+end
+
+
 end
