@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   
     resources :customers, only: [:edit, :update, :withdraw]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only: [:new, :comfirm, :thanks, :index, :show, :create]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
@@ -69,6 +69,7 @@ end
 #PUT    /customers/:id(.:format)                                      customers#update
 
 #cart_items GET    /cart_items(.:format)                              cart_items#index
+#           POST   /cart_items(.:format)                              cart_items#create
 #cart_item PATCH  /cart_items/:id(.:format)                           cart_items#update
 #PUT    /cart_items/:id(.:format)                                     cart_items#update
 #DELETE /cart_items/:id(.:format)                                     cart_items#destroy
