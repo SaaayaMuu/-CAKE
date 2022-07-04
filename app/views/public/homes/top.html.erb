@@ -1,4 +1,8 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'top' %>
+<% end %>
 
+<body>
 <div class="container-fluid mt-5">
 	<div class="row justify-content-center">
 		<div class="col-xs-12 cover-img" style="background-image:url('https://img.pretty-online.jp/wp-content/uploads/2022/03/11194804/news_kineel_1.jpg');">
@@ -25,8 +29,8 @@
   <div>
     <%= image_tag item.get_image, size:"200x200", class:"border mx-2" %>
     <div class="mx-2">
-    <p><%= item.name %></p>
-    <p><%= "￥" %><%= item.price %></p>
+    <p class="font-weight-bold"><%= item.name %></p>
+    <p class="font-weight-bold"><%= "￥" %><%= item.with_tax_price %></p>
     </div>
   </div>
 
@@ -37,3 +41,4 @@
 <p><%= link_to "全ての商品を見る>", items_path %></p>
 </div>
 
+</body>

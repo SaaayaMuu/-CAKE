@@ -19,10 +19,12 @@ Rails.application.routes.draw do
   scope module: :public do
     get '/customers/my_page', to: 'customers#show'
     get '/customers/unsubscribe' => 'customers#unsubscribe' 
-  
-    resources :customers, only: [:edit, :update, :withdraw]
+    patch '/customers/withdraw' => 'customers#withdraw'
+    
+    resource :customers, only:[:edit, :update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    delete :cart_items, to: 'cart_items#destroy_all'
     resources :orders, only: [:new, :comfirm, :thanks, :index, :show, :create]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
@@ -65,14 +67,16 @@ end
 
 #customers_my_page GET    /customers/my_page(.:format)                customers#show
 #customers_unsubscribe GET    /customers/unsubscribe(.:format)        customers#unsubscribe
-#edit_customer GET    /customers/:id/edit(.:format)                   customers#edit
-#PUT    /customers/:id(.:format)                                      customers#update
+#customers_withdraw PATCH  /customers/withdraw(.:format)              customers#withdraw
+#edit_customers GET    /customers/edit(.:format)                        customers#edit
+#customers PATCH  /customers(.:format)                                  customers#update
+#              PUT    /customers(.:format)                             customers#update
 
 #cart_items GET    /cart_items(.:format)                              cart_items#index
 #           POST   /cart_items(.:format)                              cart_items#create
-#cart_item PATCH  /cart_items/:id(.:format)                           cart_items#update
-#PUT    /cart_items/:id(.:format)                                     cart_items#update
-#DELETE /cart_items/:id(.:format)                                     cart_items#destroy
+#cart_item PATCH   /cart_items/:id(.:format)                          cart_items#update
+# =>        PUT    /cart_items/:id(.:format)                          cart_items#update
+#DELETE 　　　　　/cart_items/:id(.:format)                           cart_items#destroy
 
 #orders GET    /orders(.:format)                                      orders#index
 #POST   /orders(.:format)                                             orders#create

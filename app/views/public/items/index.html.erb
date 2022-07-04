@@ -12,7 +12,7 @@
       <%= image_tag item.get_image, size:"200x200", class:"border mx-5" %>
       <div class="mx-5">
         <p class="text-dark font-weight-bold"><%= item.name %></p>
-        <p class="text-dark font-weight-bold"><%= "￥" %><%= item.price %></p>
+        <p class="text-dark font-weight-bold"><%= "￥" %><%= item.with_tax_price %></p>
       </div>
     </div>
   <% end %>
