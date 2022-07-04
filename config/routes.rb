@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-
+  
+  scope module: :public do
+    resource :customers, only:[:edit, :update]
+  end
+  
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -20,8 +24,6 @@ Rails.application.routes.draw do
     get '/customers/my_page', to: 'customers#show'
     get '/customers/unsubscribe' => 'customers#unsubscribe' 
     patch '/customers/withdraw' => 'customers#withdraw'
-    
-    resource :customers, only:[:edit, :update]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     delete :cart_items, to: 'cart_items#destroy_all'
@@ -55,9 +57,6 @@ end
 #DELETE /customers(.:format)                                         public/registrations#destroy
 #POST   /customers(.:format)                                         public/registrations#create
 
-#customers_unsubscribe GET    /customers/unsubscribe(.:format)       customers#unsubscribe
-#mypage GET    /customers/my_page(.:format)                          customers#show
-#edit_customer GET    /customer/edit(.:format)                       customers#edit
 
 #root GET                     /                                      public/homes#top
 #about GET    /about(.:format)                                       homes#about
