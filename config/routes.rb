@@ -24,11 +24,13 @@ Rails.application.routes.draw do
     get '/customers/my_page', to: 'customers#show'
     get '/customers/unsubscribe' => 'customers#unsubscribe' 
     patch '/customers/withdraw' => 'customers#withdraw'
+    post '/orders/comfirm' => 'orders#comfirm'
+    get '/orders/thanks'=> 'orders#thanks'
     
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
     delete :cart_items, to: 'cart_items#destroy_all'
-    resources :orders, only: [:new, :comfirm, :thanks, :index, :show, :create]
+    resources :orders, only: [:new, :index, :show, :create]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
@@ -77,11 +79,14 @@ end
 #cart_item PATCH   /cart_items/:id(.:format)                          cart_items#update
 # =>        PUT    /cart_items/:id(.:format)                          cart_items#update
 #DELETE 　　　　　/cart_items/:id(.:format)                           cart_items#destroy
+#DELETE /cart_items(.:format)                                         cart_items#destroy_all
 
 #orders GET    /orders(.:format)                                      orders#index
 #POST   /orders(.:format)                                             orders#create
 #new_order GET    /orders/new(.:format)                               orders#new
 #order GET    /orders/:id(.:format)                                   orders#show
+#orders_comfirm POST   /orders/comfirm(.:format)                      public/orders#comfirm
+#orders_thanks GET    /orders/thanks(.:format)                        public/orders#thanks
 
 #addresses GET    /addresses(.:format)                                addresses#index
 #POST   /addresses(.:format)                                          addresses#create
