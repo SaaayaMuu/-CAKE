@@ -23,7 +23,7 @@
       <%= f.radio_button :select_address, "0" %>
       <%= f.label :select_address_0, "ご自身の住所" %>
       <div class="ml-4">
-        <%= @customer.address %><br>
+        <%= "〒" %><%= @customer.postal_code %><%= "  " %><%= @customer.address %><br>
         <%= @customer.last_name %><%= @customer.first_name %>
       </div>
     </div>
