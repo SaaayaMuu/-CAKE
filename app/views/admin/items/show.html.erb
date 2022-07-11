@@ -13,16 +13,16 @@
         <label for="item_name" class="col-4 col-sm-6 col-md-5 col-lg-4 col-xl-4 col-form-label">商品名</label>
         <%= @item.name %></br>
         
-        <label for="item_name" class="col-4 col-sm-6 col-md-5  col-lg-4 col-form-label">商品説明</label>
+        <label for="item_name" class="col-4 col-sm-6 col-md-5 col-lg-4 col-form-label">商品説明</label>
         <%= @item.introduction %></br>
         
-        <label for="item_genre" class="col-4 col-sm-6 col-md-5  col-lg-4 col-form-label">ジャンル</label>
+        <label for="item_genre" class="col-4 col-sm-6 col-md-5 col-lg-4 col-form-label">ジャンル</label>
         <%= @item.genre.name %></br>
         
-        <label for="item_price" class="col-4 col-sm-6 col-md-5  col-lg-4 col-form-label">税込価格</label>
-        <%= @item.price %></br>
+        <label for="item_price" class="col-4 col-sm-6 col-md-5 col-lg-4 col-form-label">税込価格<br>(税抜価格)</label>
+        <%= @item.with_tax_price %><%= "(" %><%= @item.price %><%= ")円" %></br>
         
-        <label for="item_price" class="col-4 col-sm-6 col-md-5  col-lg-4 col-form-label">販売ステータス</label>
+        <label for="item_price" class="col-4 col-sm-6 col-md-5 col-lg-4 col-form-label">販売ステータス</label>
          <%= @item.is_active ? '販売中' : '販売停止中' %></br>
          
         <div class="text-center mt-3 mr-5"> 

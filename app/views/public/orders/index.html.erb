@@ -6,6 +6,8 @@
         </p>
       </div>
     </div>
+    <div class="row">
+    <div class="col-12">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -34,12 +36,13 @@
           
           
           <td class="align-middle"><%= order.total_price %><%= "円" %></td>
-          <td class="align-middle"><%= order.status %></td>
+          <td class="align-middle"><%= order.status_i18n %></td>
           <td class="align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary text-light" %></td>
         </tr>
         
         <% end %>
-
       </tbody>
     </table>
+    </div>
+    </div>
   </div>

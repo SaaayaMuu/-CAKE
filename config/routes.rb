@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
   
+  namespace :admin do
+    get 'orders/show'
+  end
   scope module: :public do
     resource :customers, only:[:edit, :update]
   end
@@ -39,6 +42,8 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show, :edit, :update, :index, :destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
   end
   
 
@@ -118,3 +123,8 @@ end
 #admin_customer GET    /admin/customers/:id(.:format)                admin/customers#show
 #PATCH  /admin/customers/:id(.:format)                               admin/customers#update
 #PUT    /admin/customers/:id(.:format)                               admin/customers#update
+#admin_order GET    /admin/orders/:id(.:format)                       admin/orders#show
+#PATCH  /admin/orders/:id(.:format)                                   admin/orders#update
+#PUT    /admin/orders/:id(.:format)                                   admin/orders#update
+#admin_order_detail PATCH  /admin/order_details/:id(.:format)         admin/order_details#update
+#PUT    /admin/order_details/:id(.:format)                            admin/order_details#update

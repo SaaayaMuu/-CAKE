@@ -3,8 +3,8 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   
   def index
-    @orders = Order.all
-    @order_details = OrderDetail.all
+    @customer = current_customer
+    @orders = @customer.orders.all.order("created_at DESC")
   end
   
   def show
@@ -73,7 +73,11 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage, :total_price, :customer_id)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage, :total_price, :customer_id, :status)
+  end
+  
+  def order_detail_params
+    params.require(:order_detail).permit(:making_status)
   end
 
 end

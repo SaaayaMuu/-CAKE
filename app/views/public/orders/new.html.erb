@@ -32,7 +32,7 @@
       <%= f.radio_button :select_address, "1" %>
       <%= f.label :select_address_1, "登録済み住所から選択" %>
       <div calss="ml-4 mt-4">
-        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+        <%= f.select :address_id, options_from_collection_for_select(@customer.addresses.all, :id, :address_display) %>
       </div>
     </div>
     
