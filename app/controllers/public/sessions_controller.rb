@@ -21,10 +21,12 @@ class Public::SessionsController < Devise::SessionsController
   # end
   
   def after_sign_in_path_for(resource)
-    customers_my_page_path
+    flash[:notice] = 'ログインしました'
+    root_path
   end
   
   def after_sign_out_path_for(resource)
+    flash[:notice] = 'ログアウトしました'
     root_path
   end 
   

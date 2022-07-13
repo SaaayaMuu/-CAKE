@@ -20,7 +20,7 @@
     <span class="font-weight-bold">お届け先</span>
     
     <div class="ml-5">
-      <%= f.radio_button :select_address, "0" %>
+      <%= f.radio_button :select_address, "0" , {required: true}%>
       <%= f.label :select_address_0, "ご自身の住所" %>
       <div class="ml-4">
         <%= "〒" %><%= @customer.postal_code %><%= "  " %><%= @customer.address %><br>

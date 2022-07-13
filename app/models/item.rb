@@ -4,6 +4,12 @@ class Item < ApplicationRecord
  belongs_to :genre
  has_many :cart_items, dependent: :destroy
  has_many :order_details, dependent: :destroy
+ 
+ validates :image, presence: { message: '未選択です' }
+ validates :name, presence: { message: '未入力です' }
+ validates :introduction, presence: { message: '未入力です' }
+ validates :genre, presence: { message: '未選択です' }
+ validates :price, presence: { message: '未入力です' }
 
  
   def get_image

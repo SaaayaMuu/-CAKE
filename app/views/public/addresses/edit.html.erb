@@ -11,19 +11,19 @@
     <div class="row mb-3">
       <label for="inputImage" class="col-sm-4 col-lg-3 col-xl-3 col-form-label">郵便番号(ハイフンなし)</label>
       <div class="col-sm-8 col-lg-5 col-xl-5 col-md-7">
-          <%= f.text_field :postal_code, autofocus: true, id:"customer_Postal_code", placeholder: "postal_code" %>
+          <%= f.text_field :postal_code, autofocus: true, id:"customer_Postal_code", placeholder: "postal_code", required: true %>
        </div>
     </div>
     <div class="row mb-3">
       <label for="inputImage" class="col-sm-4 col-lg-3 col-xl-3 col-form-label">住所</label>
       <div class="col-sm-8 col-lg-5 col-xl-5 col-md-7">
-          <%= f.text_area :address, autofocus: true, id:"customer_address", placeholder: "address", :size => "50%" %>
+          <%= f.text_area :address, autofocus: true, id:"customer_address", placeholder: "address", required: true, :size => "50%" %>
        </div>
     </div>
     <div class="row mb-3">
       <label for="inputImage" class="col-sm-4 col-lg-3 col-xl-3 col-form-label">宛名</label>
       <div class="col-sm-8 col-lg-5 col-xl-5 col-md-7">
-          <%= f.text_field :name, autofocus: true, id:"customer_name", placeholder: "name" %>
+          <%= f.text_field :name, autofocus: true, id:"customer_name", placeholder: "name", required: true %>
           <span><%= f.submit "変更内容を保存", method: :patch, class: "btn btn-sm btn-success px-4 py-2" %></span>
       </div>
     </div>

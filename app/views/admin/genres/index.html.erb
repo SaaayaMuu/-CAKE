@@ -8,7 +8,7 @@
   <div class="row mb-3">
     <label for="genre_name" class="col-sm-3 col-md-3 com-lg-1 col-xl-2">ジャンル名</label>
     <div>
-      <input class="form-control genre_name" type="text" name="genre[name]" id="genre_name">
+      <input class="form-control genre_name" type="text" required="required" name="genre[name]" id="genre_name" >
     </div>
     <div class="form_action">
       <%= f.submit "登録する", class: "btn btn-success ml-4" %>
