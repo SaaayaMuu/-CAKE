@@ -18,7 +18,7 @@
     <div class="row mb-3 justify-content-center">
       <label for="item_image" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">商品画像</label>
       <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4">
-        <%= f.file_field :image, accept: "image/*" , required: true%>
+        <%= f.file_field :image, accept: "image/*" , required: true %>
         </div>
     </div>
     
@@ -37,7 +37,7 @@
     </div>
     
     <div class="row mb-3 justify-content-center">
-      <label for="item_introduction" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">ジャンル</label>
+      <label for="item_genre" class="col-sm-4 col-lg-3 col-xl-2 col-form-label">ジャンル</label>
       <div class="col-sm-4 col-lg-5 col-xl-5 col-md-4">
         <%= f.collection_select :genre_id, Genre.all, :id, :name, {:include_blank => "ジャンルを選択してください"},{required: true} %>
       </div>

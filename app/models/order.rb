@@ -7,4 +7,8 @@ class Order < ApplicationRecord
   
   enum status: { waiting_for_deposit: 0, deposit_confirmation: 1, now_at_work: 2, 
                  preparation_for_shipment: 3, shipped: 4}
+                 
+  validates :postal_code, presence: true
+  validates :name, presence: true
+  validates :address, presence: true
 end

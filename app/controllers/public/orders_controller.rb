@@ -39,6 +39,9 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @order.postal_code
       @order.address = @order.address
       @order.name = @order.name
+    else
+      flash[:error] = '情報を正しく入力して下さい。'
+      render :new
     end
   end
   

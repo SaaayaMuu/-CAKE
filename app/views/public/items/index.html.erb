@@ -1,9 +1,9 @@
-
-
+<body>
 
 <div class="row mb-5 justify-content-center">
-  <h2 class="mt-5">商品一覧</h2>
+  <h2 class="mt-5">商品一覧<span style="font-size:20px">(全<%= @all_items_count %>件)</span></h2>
 </div>
+
 
 <div class="row justify-content-center">
   <% @items.each do |item| %>
@@ -18,9 +18,11 @@
   <% end %>
   <% end %>
 </div>
- 
+
 
 
 <div class="row mt-4 justify-content-center">
 <p><%= paginate @items %></p>
 </div>
+
+</body>

@@ -23,11 +23,14 @@
           <td><%= link_to admin_order_path(order.id), class: "text-dark" do %><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %><% end %></td>
           <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
           <td>
-            <% total_amount = 0 %>
-            <% order.order_details.each do |order_detail| %>
-              <% total_amount += order_detail.amount %>
-            <% end %>
-            <%= total_amount %>
+            <%= order.order_details.sum(:amount) %>
+            
+ <!--       <% total_amount = 0 %>
+ <!--           <% order.order_details.each do |order_detail| %>-->
+ <!--             <% total_amount += order_detail.amount %>-->
+ <!--           <% end %>-->
+ <!--           <%= total_amount %>          sumを使った計算の方が記述が少ない-->
+            
           </td>
           <td><%= order.status_i18n %></td>
         </tr>

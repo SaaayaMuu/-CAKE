@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>NaganoCake</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,7 +17,7 @@
       <div class="container my-4">
         <%= link_to root_path, class: "text-dark" do %><div class="border px-4"><h4>LOGO</h4></div><% end %>
         <% if customer_signed_in?%>
-          <span class="ml-5">ようこそ、<%= current_customer.last_name %>さん！</span>
+          <span class="welcol ml-5">ようこそ、<%= current_customer.last_name %>さん！</span>
         <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
